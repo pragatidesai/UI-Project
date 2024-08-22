@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="col-md-5 col-md-offset-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Book the Flight</div>
+        
+        <form [formGroup]="flightBookingForm">
+            <div class="form-group">
+                <label>Passenger Name</label>
+                <input type="text" class="form-control" formControlName="passengerName"/>
+            </div>
+            <div class="form-group">   
+                    <label>Number of tickets </label>
+                   <input type="text" class="form-control" formControlName="noOfTickets"/>
+            </div>
+            <div class="form-group">   
+                <label>Flight Id </label>
+                <input type="text" class="form-control" formControlName="flightId"/>
+            </div>        
+            <button type="submit" class="btn btn-primary" (click)="submitted=true" >Book</button>
+        </form>
+    <br/>
+    <div [hidden]="!submitted">
+      <h3> Flight Details </h3>
+      <p> Passanger Name: {{ flightBookingForm.get('passengerName')?.value }} </p>
+      <p> No Of Tickets: {{ flightBookingForm.get('noOfTickets')?.value }} </p>
+      <p> FlightId: {{ flightBookingForm.get('flightId')?.value }}</p>
+      
+    </div>
+      </div>
+    </div>
+  </div>

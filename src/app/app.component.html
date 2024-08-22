@@ -1,0 +1,52 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div>
+      <a class="navbar-brand" href="#">Flight Booking</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <!--Add the navigational links here-->
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div>
+    <div [hidden]="agree">
+      <div class="allign">
+        <h1>Welcome to Flight Booking System !</h1>
+      </div>
+      <div class="container-fluid">
+        <button (click)="getData()"> GetFlights</button>
+      </div>
+      <div *ngIf="loadFlightData">
+        <h3>Response Data:</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="(responseData$ | async) as data">
+                <tr *ngFor="let user of data">
+                    <td>{{user.userId}}</td>
+                    <td>{{user.id}}</td>
+                    <td>{{user.title}}</td>
+                    <td>{{user.completed}}</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <h2>Quick Guidelines :</h2>
+      <ol>
+        <li>While booking, enter proper flight Id (having 4 digit number).</li>
+        <li>Number of booking tickets can not be more than 40.</li>
+      </ol>
+      <input type="button" value="Got It" (click)="agreed(1)">
+    </div>
+
+  </div>
+  <router-outlet></router-outlet>
+</div>
